@@ -1,32 +1,73 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Mountainbike Trails Salzburger Land</title>
+    <title>Biketrails Salzburger Land</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-    <link rel="stylesheet" href="../js/leaflet/leaflet.css" />
-    <script src="../js/leaflet/leaflet.js"></script>
-   
+    <link rel="stylesheet" href="/js/leaflet/leaflet.css" />
+    <script src="/js/leaflet/leaflet.js"></script>
+
+    <script src="/js/leaflet.gpx/gpx.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
-   
-   <script src='../js/leaflet.fullscreen/Leaflet.fullscreen.js'></script>
-    <link href='../js/leaflet.fullscreen/leaflet.fullscreen.css' rel='stylesheet' />
-    
+    <!--<script src="data/etappe18.geojson.js"></script>-->
+
     <script defer src="salzBike.js"></script>
-
-    <script src="../js/d3/d3.js"></script>
-    <script src="../js/leaflet.elevation/leaflet.elevation-0.0.4.src.js"></script>
-    <link rel="stylesheet" href="../js/leaflet.elevation/leaflet.elevation-0.0.4.css" />
-   
-
-    <script defer src="mtbSalzburg.js"></script>
-
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    
+    <script src="/js/d3/d3.v3.min.js"></script>
+    <link rel="stylesheet" href="/js/leaflet.elevation/leaflet.elevation-0.0.4.css" />
+    <script src="/js/leaflet.elevation/leaflet.elevation-0.0.4.min.js"></script>
 </head>
+
 <body>
-    <div id="map"></div>
+    <div id="header">
+        <h2 class="white">Bike Trails im Salzburger Land</h2>
+    </div>
+
+    <div class="author">
+        <img src="images/user.jpg" alt="Ihre Reiseleiter" />
+        <p class="gray">
+            <a href="https://github.com/HackerboysIbk/HackerboysIbk.github.io">https://github.com/HackerboysIbk/HackerboysIbk.github.io</a>
+        </p>
+    </div>
+
+    <hr />
+
+    
+    <div class="article">
+        <h1>Die Jacobskrönung der Radtour-Gebiete</h1>
+
+        <p>Im Salzburger Land gibt es Bike-Touren für Klein und Groß - für Familien und Leistungssportler. Auf unserer interaktiven Karte können Sie ihre nächste Tour individuell nach ihren Fähigkeiten und Bedürfnissen auswählen. Des Weiteren können Sie über die automatisierte Steigungslinie Informationen bezüglich Aufteilung der einzelnen Teilstrecken erhalten. 
+    
+        
+        <!--TODO: Karte mit Radroute und Marker beim Start- und Endpunkt. Hintergrundkarte OSM, basemap.at und Elektronische Karte Tirol (Sommer, Winter, Orthophoto jeweils mit Beschriftung) - siehe biketirol.js-->
+        <div id="map"></div>
+
+        <h3>Interessante Links zu Wetter und Fahrradvermietung</h3>
+        <ul>
+            <li><a target=_blank href="https://www.tirol.at/reisefuehrer/sport/radfahren/biketouren/a-bike-trail-tirol-mayrhofen-lanersbach"> Tirol.at Tourenbeschreibung</a></li>
+            <li><a target=_blank href="http://www.greenroom.at"> E-Bike-Vermietung Mayrhofen</a></li>
+            <li><a target=_blank href="https://www.bergfex.at/mayrhofen/wetter/"> Wetter Mayrhofengas</a></li>
+            <li><a target=_blank href="https://www.bergfriedalm.at"> Gasthaus Lanersbach</a></li>
+        </ul>
+    </div>
+
+    <hr />
+
+    
+    <div id="footer" class="gray">
+        <a class="back" href="../15/index.html"> <!--schaun ob man 17 oder 15 nimmt-->
+            <i class="fas fa-arrow-alt-circle-left"></i> vorhergehender Stop</a>
+        <a class="next" href="../19/index.html">nÃ¤chster Stop
+            <i class="fas fa-arrow-alt-circle-right"></i>
+        </a>
+    </div>
+
 </body>
 </html>
