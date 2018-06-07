@@ -8,57 +8,38 @@ let eleGroup =L.featureGroup().addTo(myMap);
 
 let myLayers = {
 
-    openstreetmap: L.tileLayer(
+    osm: L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             subdomains: ["a", "b", "c"],
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }
     ),
     geolandbasemap: L.tileLayer(
+        "https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+            subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
+            attribution: "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
+        }
+    ),
+    bmapoverlay: L.tileLayer(
         "https://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
             subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
             attribution: "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
         }
     ),
-
-    elektro_sommer: L.tileLayer(
-        "https://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
-            attribution: "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
-        }
-    ),
-    elektronische_karte_sommer: L.tileLayer(
-        "http://wmts.kartetirol.at/wmts/gdi_base_summer/GoogleMapsCompatible/{z}/{x}/{y}.jpeg80"
-        , {
-
-            attribution: "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
-        }
-    ),
-
-    elektronische_karte_winter: L.tileLayer(
-        "http://wmts.kartetirol.at/wmts/gdi_base_winter/GoogleMapsCompatible/{z}/{x}/{y}.jpeg80"
-        , {
-
-            attribution: "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
-        }
-    ),
-
-    elektronische_karte_ortho: L.tileLayer(
-        "http://wmts.kartetirol.at/wmts/gdi_ortho/GoogleMapsCompatible/{z}/{x}/{y}.jpeg80"
-        , {
-
+    bmaporthofoto30cm: L.tileLayer(
+        "https://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
+            subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
             attribution: "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
         }
     ),
 };
 
-myMap.addLayer(myLayers.elektronische_karte_sommer);
+myMap.addLayer(myLayers.osm);
 
 let myMapControl = L.control.layers({
-    "Open Streetmap": myLayers.openstreetmap,
+    "Open Streetmap": myLayers.osm,
     "Geoland Basemap": myLayers.geolandbasemap,
-    "Sommerkarte": myLayers.elektronische_karte_sommer,
-    "Winterkarte": myLayers.elektronische_karte_winter,
-    "Ortho-karte": myLayers.elektronische_karte_ortho,
+    "Orthofoto": myLayers.bmaporthofoto30cm,
 }, {
         "Wegpunkte": trailGroup,
         "Start/Ziel": markerGroup,
@@ -66,8 +47,8 @@ let myMapControl = L.control.layers({
     });
 
 //myMap.addLayer(markerGroup);
-const start = [47.166344, 11.864736]
-const ende = [47.162733, 11.745067]
+const start = [47.278225, 13.31937]
+const ende = [47.287605, 13.309806]
 
 let startMarker = L.marker(start,
     {
@@ -76,7 +57,6 @@ let startMarker = L.marker(start,
             iconAnchor: [16, 37]
         })
     }).addTo(markerGroup);
-startMarker.bindPopup("<h3>Mayrhofen</h3><a href = 'https://de.wikipedia.org/wiki/Mayrhofen'> Information Mayrhofen </a>");
 
 let endeMarker = L.marker(ende,
     {
@@ -85,7 +65,6 @@ let endeMarker = L.marker(ende,
             iconAnchor: [16, 37]
         })
     }).addTo(markerGroup);
-endeMarker.bindPopup("<h3>Lanersbach</h3> <a href = 'https://de.wikipedia.org/wiki/Lanersbach'> Information Lanersbach </a>");
 
 
 
@@ -113,7 +92,7 @@ let hoehenprofil = L.control.elevation({
 let gpxTrack = new L.GPX("data/baierwald_runde.gpx", {
     async: true,
 }).addTo(trailGroup);
-gpxTrack.on("loaded", function(evt){
+/*gpxTrack.on("loaded", function(evt){
     console.log("Distanz:", evt.target.get_distance().toFixed(0))
     console.log("HÃ¶chste Punkt:", evt.target.get_elevation_min().toFixed(0))
     console.log("Niedrigster Punkt: ", evt.target.get_elevation_max().toFixed(0))
@@ -136,18 +115,18 @@ gpxTrack.on("loaded", function(evt){
     document.getElementById("abstieg").innerHTML=abstieg;
 
     myMap.fitBounds(evt.target.getBounds());
-})
+})*/
 
 
 
 gpxTrack.on("addline",function(evt){
     hoehenprofil.addData(evt.line);
-    console.log(evt.line);
+    /*console.log(evt.line);
     console.log(evt.line.getLatLngs());
     console.log(evt.line.getLatLngs()[0].meta);
     console.log(evt.line.getLatLngs()[0].lat);
     console.log(evt.line.getLatLngs()[0].lng);
-    console.log(evt.line.getLatLngs()[0].meta.ele);
+    console.log(evt.line.getLatLngs()[0].meta.ele);*/
 
 
     let gpxLinie = evt.line.getLatLngs();
@@ -168,7 +147,7 @@ gpxTrack.on("addline",function(evt){
         //Steigung in %
         let proz = (dist>0) ? (delta/dist*100.0).toFixed(2): 0
 
-        console.log(p1.lat, p1.lng, p2.lat, p2.lng, dist,delta,proz);
+        //console.log(p1.lat, p1.lng, p2.lat, p2.lng, dist,delta,proz);
 
         let farbe = 
             proz > 10   ? "#cb181d" :
@@ -191,34 +170,4 @@ gpxTrack.on("addline",function(evt){
         ).addTo(eleGroup);
     }
 });
-
-
-
-/*let geojson = L.geoJSON(trailjs).addTo(trailGroup);
-geojson.bindPopup(function(layer){
-    const props = layer.feature.properties
-    const popupText = `<h1>Hallo</h1>
-    //<p>Es geht</p>`;
-    return popupText;
-});
-
-
-
-myMap.fitBounds(trailGroup.getBounds());*/
-
-
-// eine neue Leaflet Karte definieren
-
-// Grundkartenlayer mit OSM, basemap.at, Elektronische Karte Tirol (Sommer, Winter, Orthophoto jeweils mit Beschriftung) Ã¼ber L.featureGroup([]) definieren
-// WMTS URLs siehe https://www.data.gv.at/katalog/dataset/land-tirol_elektronischekartetirol
-
-// MaÃŸstab metrisch ohne inch
-
-// Start- und Endpunkte der Route als Marker mit Popup, Namen, Wikipedia Link und passenden Icons fÃ¼r Start/Ziel von https://mapicons.mapsmarker.com/
-
-// GeoJSON Track als Linie in der Karte einzeichnen und auf Ausschnitt zoomen
-// Einbauen nicht Ã¼ber async, sondern Ã¼ber ein L.geoJSON() mit einem Javascript Objekt (wie beim ersten Stadtspaziergang Wien Beispiel)
-
-// Baselayer control fÃ¼r OSM, basemap.at, Elektronische Karte Tirol hinzufÃ¼gen
-
-// Overlay controls zum unabhÃ¤ngigem Ein-/Ausschalten der Route und Marker hinzufÃ¼gen
+//https://github.com/mountainbikentirol/mountainbikentirol.github.io/tree/master/projekt
