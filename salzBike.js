@@ -49,27 +49,6 @@ let myLayers = {
             attribution: "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
         }
     ),
-    /*    
-        bmapgrau : L.tileLayer (
-            "https://{s}.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{y}/{x}.png", {
-                subdomains : ["maps","maps1","maps2","maps3","maps4"],
-                attribution : "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
-            }
-        ),
-    
-        bmaphidpi : L.tileLayer (
-            "https://{s}.wien.gv.at/basemap/bmaphidpi/normal/google3857/{z}/{y}/{x}.jpeg", {
-                subdomains : ["maps","maps1","maps2","maps3","maps4"],
-                attribution : "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
-            }
-        ),
-    
-        bmaporthofoto30cm : L.tileLayer (
-            "https://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
-                subdomains : ["maps","maps1","maps2","maps3","maps4"],
-                attribution : "Datenquelle: <a href='https://www.basemap.at'>basemap.at</a>"
-            }
-        ),*/
 };
 
 myMap.addLayer(myLayers.elektronische_karte_sommer);
@@ -80,11 +59,7 @@ let myMapControl = L.control.layers({
     "Sommerkarte": myLayers.elektronische_karte_sommer,
     "Winterkarte": myLayers.elektronische_karte_winter,
     "Ortho-karte": myLayers.elektronische_karte_ortho,
-    /*"Map Grau" : myLayers.bmapgrau,
-    "Map hochaufgeloest" : myLayers.bmaphidpi,
-    "Orthophoto 30cm" : myLayers.bmaporthofoto30cm,*/
 }, {
-        //"B Map Overlay" : myLayers.bmapoverlay,
         "Wegpunkte": trailGroup,
         "Start/Ziel": markerGroup,
         "Steigungslinie": eleGroup,
@@ -135,7 +110,7 @@ let hoehenprofil = L.control.elevation({
 
 //console.log("Wegpunkte: ", trailjs);
 
-let gpxTrack = new L.GPX("data/etappe18.gpx", {
+let gpxTrack = new L.GPX("data/baierwald_runde.gpx", {
     async: true,
 }).addTo(trailGroup);
 gpxTrack.on("loaded", function(evt){
