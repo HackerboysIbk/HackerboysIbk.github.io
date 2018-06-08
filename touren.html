@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Routen Detailbeschreibung</title>
+
+    <link rel="stylesheet" href="js/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="js/leaflet.elevation/leaflet.elevation-0.0.4.min.js" />
+    <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet.elevation/leaflet.elevation-0.0.4.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+
+    <script src="toureninfo.js"></script>
+    <script src="salzBike.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+  <a href="index.html">Home</a>
+  
+  <div class="dropdown">
+    <button class="dropbtn">Touren</button>
+    <div class="dropdown-content">
+      <a href="touren.html?gpx=Gaisberg_Gipfel.gpx">Gaisberg Gipfel Tour</a>
+      <a href="touren.html?gpx=Gaisberg_Zistelalm.gpx">Gaisberg Zistelalm Tour</a>
+      <a href="touren.html?gpx=Hoeglrunde.gpx">Hoegelrunde</a>
+      <a href="touren.html?gpx=Kleine_Dax_Lueg_Ausfahrt.gpx">Kleine Dax Ausfahrt</a>
+      <a href="touren.html?gpx=Muehlsteinrunde.gpx">Mühlsteinrunde</a>
+      <a href="touren.html?gpx=Rupertiwinkel.gpx">Rupertiwinkel</a>
+      <a href="touren.html?gpx=Staufen_Umrundung.gpx">Staufner Umrundung</a>
+	  <a href="touren.html?gpx=Wallersee_Rundfahrt.gpx">Wallersee Rundfahrt</a>
+    </div>
+
+  </div> 
+       <a href="team.html">Team</a>
+</div>
+
+
+    <h1 id="Titel"></h1>
+
+
+    <h5>
+        <p id="Kurztext"></p>
+    </h5>
+	
+	
+    <select id="gpx">
+			<option value="" selected>Tourenauswahl</option>
+			<option value="Gaisberg_Gipfel.gpx">Gaisberg Gipfel Tour</option>
+			<option value="Gaisberg_Zistelalm.gpx">Gaisberg Zistelalm Tour</option>
+			<option value="Hoeglrunde.gpx">Hoegelrunde</option>
+			<option value="Kleine_Dax_Lueg_Ausfahrt.gpx">Kleine Dax Ausfahrt</option>
+			<option value="Muehlsteinrunde.gpx">Mühlsteinrunde</option>
+			<option value="Rupertiwinkel.gpx">Rupertiwinkel</option>
+			<option value="Staufen_Umrundung.gpx">Staufner Umrundung</option>
+			<option value="Wallersee_Rundfahrt.gpx">Wallersee Rundfahrt</option>
+	</select>
+  
+
+    <div id="map"></div>
+
+    <p></p>
+
+
+    <p></p>
+
+    <table border="1">
+        <tr>
+			<td>
+                <h4>Start- und Endpunkt</h4>
+                <div id="Start"></div>
+            </td>
+            <td>
+                <h4>Parkplatz</h4>
+                <div id="Parkplatz"></div>
+            </td>
+
+            <td>
+                <h4>Art der Tour </h4>
+                <div id="ArtderTour"></div>
+            </td>
+
+            <td>
+                <h4>Länge in Km</h4>
+                <div id="Laenge"></div>
+            </td>
+            <td>
+                <h4>Dauer in Std. </h4>
+                <div id="Zeit"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Gebirgszug</h4>
+                <div id="Gebirgszug"></div>
+            </td>
+            <td>
+                <h4>Schwierigkeit</h4>
+                <div id="Schwierigkeit"></div>
+            </td>
+            <td>
+                <h4>Aufstieg in hm</h4>
+                <div id="auf"></div>
+            </td>
+            <td>
+                <h4>Abstieg in hm</h4>
+                <div id="ab"></div>
+            </td>
+            <td>
+                <h4>höchster Punkt in hm</h4>
+                <div id="HoechsterPunkt"></div>
+            </td>
+        </tr>
+    </table>
+
+
+    <h2>Tourenbeschreibung </h2>
+    <div>
+        <div id="Tourenbeschreibung"></div>
+    </div>
+
+    <div id="Foto"></div>
+
+
+    <br></br>
+
+
+    <em> Inhaltlich stammen die Informationen von <div id ="Quelle"></div></em>
+
+
+    <br></br>
+    <p class="author"><a href="https://mountainbikentirol.github.io/projekt/">Zurück zur Startseite</p>
+
+
+
+    <script>
+    </script>
+    <div id=hintergrundquelle>Quelle und © Hintergrundbild:
+        <a href=http://greywolf-graphics.com/images/mountain-biking-wallpaper/mountain-biking-wallpaper-34.jpg ">Greywolf Graphics</a></div>
+</body>
+</html>

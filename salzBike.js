@@ -1,9 +1,7 @@
-var myMap = L.map("map", {
-    fullscreenControl: true,
-});
+var myMap = L.map("map");
 
 let markerGroup = L.featureGroup().addTo(myMap);
-const trailGroup = L.featureGroup();
+let trailGroup = L.featureGroup();
 let eleGroup =L.featureGroup().addTo(myMap);
 
 let myLayers = {
@@ -80,18 +78,50 @@ L.control.scale({
 
 
 
-//HÃ¶henprofil einspeisen Ã¼ber leaflet.elevation plugin (23.05)
+//Hoehenprofil einspeisen ueber leaflet.elevation plugin (23.05)
 let hoehenprofil = L.control.elevation({
     position: "topright",
     theme: "steelblue-theme",
     collapsed: false,
 }).addTo(myMap);
 
+
+
 //console.log("Wegpunkte: ", trailjs);
 
-let gpxTrack = new L.GPX("data/baierwald_runde.gpx", {
-    async: true,
-}).addTo(trailGroup);
+function loadTrack(track) {
+
+    //Etappeninfo anzeigen
+    document.getElementById("Titel").innerHTML = window.TOURENINFO[track].Titel;
+    document.getElementById("Kurztext").innerHTML = window.TOURENINFO[track].Kurztext;
+    document.getElementById("ArtderTour").innerHTML = window.TOURENINFO[track].ArtderTour;
+    document.getElementById("Tourenbeschreibung").innerHTML = window.TOURENINFO[track].Tourenbeschreibung;
+    document.getElementById("Start").innerHTML = window.TOURENINFO[track].Start;
+    document.getElementById("auf").innerHTML = window.TOURENINFO[track].auf;
+    document.getElementById("ab").innerHTML = window.TOURENINFO[track].ab;
+    document.getElementById("HoechsterPunkt").innerHTML = window.TOURENINFO[track].HoechsterPunkt;
+    document.getElementById("Schwierigkeit").innerHTML = window.TOURENINFO[track].Schwierigkeit;
+    document.getElementById("Laenge").innerHTML = window.TOURENINFO[track].Laenge;
+    document.getElementById("Zeit").innerHTML = window.TOURENINFO[track].Zeit;
+    document.getElementById("Einkehr").innerHTML = window.TOURENINFO[track].Einkehr;
+    document.getElementById("Einkehr1").innerHTML = window.TOURENINFO[track].Einkehr1;
+    document.getElementById("EinkehrHomepage").innerHTML = '<a target="_blank" href="' + window.TOURENINFO[track].EinkehrHomepage + '"> mehr Infos </a>';
+    document.getElementById("Einkehr1Homepage").innerHTML = '<a target="_blank" href="' + window.TOURENINFO[track].Einkehr1Homepage + '"> mehr Infos </a>';
+    document.getElementById("Parkplatz").innerHTML = window.TOURENINFO[track].Parkplatz;
+    document.getElementById("Gebirgszug").innerHTML = window.TOURENINFO[track].Gebirgszug;
+    document.getElementById("specials").innerHTML = window.TOURENINFO[track].specials;
+    document.getElementById("specialsWebsite").innerHTML = '<a target="_blank" href="' + window.TOURENINFO[track].specialsWebsite + '"> mehr Infos </a>';
+    document.getElementById("specials1").innerHTML = window.TOURENINFO[track].specials1;
+    document.getElementById("specials1Website").innerHTML = '<a target="_blank" href="' + window.TOURENINFO[track].specials1Website + '"> mehr Infos </a>';
+    document.getElementById("Quelle").innerHTML = '<a target="_blank" href="' + window.TOURENINFO[track].Quelle + '"> hier </a>';
+    document.getElementById("Foto").innerHTML = '<img class="Bild" src="' + window.TOURENINFO[track].Foto + '"> <img>';
+
+
+    // GPX Track laden
+    gpxTrack = omnivore.gpx('bikedata/' + track).addTo(map);
+};
+
+
 /*gpxTrack.on("loaded", function(evt){
     console.log("Distanz:", evt.target.get_distance().toFixed(0))
     console.log("HÃ¶chste Punkt:", evt.target.get_elevation_min().toFixed(0))
