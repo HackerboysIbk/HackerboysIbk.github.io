@@ -8,7 +8,7 @@
     <name>kleine Dax Lueg Ausfahrt</name>
     <trkseg>
       <trkpt lat="47.806850000" lon="13.045816000">
-        <ele>0.000000</ele>
+        <ele>478.000000</ele>
         <time>2012-05-01T08:00:00Z</time>
       </trkpt>
       <trkpt lat="47.806969000" lon="13.045708000">
@@ -1084,7 +1084,7 @@
         <time>2012-05-01T10:27:24Z</time>
       </trkpt>
       <trkpt lat="47.806553000" lon="13.045541000">
-        <ele>0.000000</ele>
+        <ele>485.000000</ele>
         <time>2012-05-01T10:27:57Z</time>
       </trkpt>
     </trkseg>
