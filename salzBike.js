@@ -1,8 +1,10 @@
-var myMap = L.map("map");
+var myMap = L.map("map",{
+    fullscreenControl: true
+});
 
 let trailGroup = L.featureGroup().addTo(myMap);
-let eleGroup =L.featureGroup().addTo(myMap);
-let markerGroup=L.featureGroup().addTo(myMap);
+let eleGroup = L.featureGroup().addTo(myMap);
+let markerGroup = L.featureGroup().addTo(myMap);
 
 let myLayers = {
 
@@ -45,30 +47,8 @@ let myMapControl = L.control.layers({
 
 
 
-var start = ["KoordinatenStart"]
-var ende = ["KoordinatenZiel"]
-
-let startMarker = L.marker(start,
-    {
-        icon: L.icon({
-            iconUrl: 'images/start.png',
-            iconAnchor: [16, 37]
-        })
-    }).addTo(markerGroup);
-
-let endeMarker = L.marker(ende,
-    {
-        icon: L.icon({
-            iconUrl: 'images/ziel.png',
-            iconAnchor: [16, 37]
-        })
-    }).addTo(markerGroup);
-
-
 
 myMap.addControl(myMapControl)
-
-//myMap.setView([47.811195, 13.033229], 11);
 
 L.control.scale({
     maxwidth: 200,
@@ -78,14 +58,14 @@ L.control.scale({
 }).addTo(myMap)
 
 
-
 //Hoehenprofil einspeisen ueber leaflet.elevation plugin (23.05)
 let hoehenprofil = L.control.elevation({
-    position: "bottomleft",
+    position: "bottomright",
     theme: "steelblue-theme",
     collapsed: false,
 }).addTo(myMap);
 
+//myMap.setView([47.811195, 13.033229], 11);
 
 function loadTrack(track) {
 
@@ -98,12 +78,12 @@ function loadTrack(track) {
     //document.getElementById("KoordinatenZiel").innerHTML = window.TOURENINFO[track].KoordinatenZiel;
     //document.getElementById("Ziel").innerHTML = window.TOURENINFO[track].Ziel;
     document.getElementById("auf").innerHTML = window.TOURENINFO[track].auf;
-    document.getElementById("ab").innerHTML = window.TOURENINFO[track].ab;
+    //document.getElementById("ab").innerHTML = window.TOURENINFO[track].ab;
     document.getElementById("HoechsterPunkt").innerHTML = window.TOURENINFO[track].HoechsterPunkt;
     //document.getElementById("NiedrigsterPunkt").innerHTML = window.TOURENINFO[track].NiedrigsterPunkt;
     document.getElementById("Schwierigkeit").innerHTML = window.TOURENINFO[track].Schwierigkeit;
     document.getElementById("Kondition").innerHTML = window.TOURENINFO[track].Kondition;
-    //document.getElementById("Technik").innerHTML = window.TOURENINFO[track].Technik;
+    document.getElementById("Technik").innerHTML = window.TOURENINFO[track].Technik;
     document.getElementById("Landschaft").innerHTML = window.TOURENINFO[track].Landschaft;
     document.getElementById("Laenge").innerHTML = window.TOURENINFO[track].Laenge;
     document.getElementById("Zeit").innerHTML = window.TOURENINFO[track].Zeit;
@@ -116,18 +96,39 @@ function loadTrack(track) {
     trailGroup.clearLayers();
     gpxTrack = omnivore.gpx('data/' + track).addTo(trailGroup)
 
+
     eleGroup.clearLayers();
-    gpxTrack.on("ready", function() {
+    gpxTrack.on("ready", function () {
 
         // Höhenprofil erzeugen
         hoehenprofil.clear();
-        gpxTrack.eachLayer(function(layer) {
+        gpxTrack.eachLayer(function (layer) {
             hoehenprofil.addData(layer.feature);
 
 
 
 
             var pts = layer.feature.geometry.coordinates;
+
+            markerGroup.clearLayers();
+            let startMarker=L.marker([
+                pts[0][1],
+                pts[0][0],
+            ],{
+                icon: L.icon({
+                    iconUrl: 'images/start.png',
+                    iconAnchor: [16, 37]
+                })
+            }).addTo(markerGroup)
+            let endMarker=L.marker([
+                pts[pts.length - 1][1],
+                pts[pts.length - 1][0],
+            ],{
+                icon: L.icon({
+                    iconUrl: 'images/ziel.png',
+                    iconAnchor: [16, 37]
+                })
+            }).addTo(markerGroup)
 
             for (var i = 1; i < pts.length; i += 1) {
 
@@ -148,37 +149,37 @@ function loadTrack(track) {
                 var farbe;
                 switch (true) {
                     case (deg >= 20):
-                        farbe = "#bd0026";
+                        farbe = "#ff0000";
                         break;
                     case (deg >= 15):
-                        farbe = "'#f03b20";
+                        farbe = "#ff3300";
                         break;
                     case (deg >= 10):
-                        farbe = "#fd8d3c";
+                        farbe = "#ff6600";
                         break;
                     case (deg >= 5):
-                        farbe = "#feb24c";
+                        farbe = "#ff9933";
                         break;
                     case (deg >= 1):
-                        farbe = "#fed976";
+                        farbe = "#ffcc00";
                         break;
                     case (deg >= -1):
-                        farbe = "yellow";
+                        farbe = "#ccff99";
                         break;
                     case (deg >= -5):
-                        farbe = "#d9f0a3";
+                        farbe = "#b3ff66";
                         break;
                     case (deg >= -10):
-                        farbe = "#addd8e";
+                        farbe = "#99ff33";
                         break;
                     case (deg >= -15):
-                        farbe = "#78c679";
+                        farbe = "#80ff00";
                         break;
                     case (deg >= -20):
-                        farbe = "#31a354";
+                        farbe = "#66cc00";
                         break;
                     case (deg < -20):
-                        farbe = "#006837";
+                        farbe = "#4d9900";
                         break;
                 }
 
@@ -195,6 +196,7 @@ function loadTrack(track) {
                     smoothFactor: 1
 
                 });
+    
 
                 firstpolyline.addTo(eleGroup);
 
@@ -208,22 +210,22 @@ function loadTrack(track) {
 
 
 var tourenSelektor = document.getElementById("gpx");
-		tourenSelektor.onchange = function(evt) {
-        console.log("change event: ", evt);
-        console.log("GPX Track laden: ", tourenSelektor.selectedIndex);
-        loadTrack(tourenSelektor.options[tourenSelektor.options.selectedIndex].value);
-    }
+tourenSelektor.onchange = function (evt) {
+    console.log("change event: ", evt);
+    console.log("GPX Track laden: ", tourenSelektor.selectedIndex);
+    loadTrack(tourenSelektor.options[tourenSelektor.options.selectedIndex].value);
+}
 
-    if (window.location.search) {
-        var gpx = window.location.search.split("=")[1];
-        for (var i = 0; i < tourenSelektor.options.length; i += 1) {
-            if (tourenSelektor.options[i].value == gpx) {
-                // Menüeintrag selektieren
-                tourenSelektor.options.selectedIndex = i;
+if (window.location.search) {
+    var gpx = window.location.search.split("=")[1];
+    for (var i = 0; i < tourenSelektor.options.length; i += 1) {
+        if (tourenSelektor.options[i].value == gpx) {
+            // Menüeintrag selektieren
+            tourenSelektor.options.selectedIndex = i;
 
-                // Track laden
-                loadTrack(gpx);
-            }
+            // Track laden
+            loadTrack(gpx);
         }
-    } else loadTrack("Gaisberg_Gipfel.gpx")
+    }
+} else loadTrack("Gaisberg_Gipfel.gpx")
 

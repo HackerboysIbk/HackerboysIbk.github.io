@@ -1,75 +1,237 @@
-/*
-*
-* CSS styles for the Bike Trail Tirol project
-*
-*/
-
+html { 
+	background: url("images/background.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+ 
+ 
 body {
-    max-width: 1280px;
-    margin: auto;
-    font-family: "Open Sans"; /* Source: https://fonts.google.com/specimen/Open+Sans */
+
+	font-family: "Open Sans";
+	font-weight: 100px;
+	margin: 100px;
+	max-width: center;
+	font-size: 20px;
+	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.6);
+    background-color: rgba(214, 208, 177, 0.774);
+    margin: 10%;
+    
 }
 
-#header {
-    text-align: center;
-    background-color: dodgerblue;
-    background-image: url('images/header.jpg');
-    background-repeat: no-repeat;
-    height: 360px;
-}
-#header h2 {
-    font-size: 4em;
-    padding: 1em 0;
-    margin: 0;
-    text-shadow: 2px 2px 4px #000000;
-}
-#header h3 {
-    font-size: 2em;
-    margin: 0;        
-    text-shadow: 2px 2px 4px #000000;
+
+
+/*Topnavigation mit Dropdown*/
+
+.container {
+    overflow: hidden;
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 
-.author {
-    text-align: center;
-}
-.author img {
-    border: 4px solid white;
-    margin-top: -50px;
-    border-radius: 50%;
-}
-.author p {
-    font-size: 0.9em;
-    font-style: italic;
+a.start    {
+    
+font-size: 16px;
+color: black;
+text-align: center;
+
+text-decoration: rgb(187, 141, 24);
+
+float: left;
+display: block;
+color: rgb(187, 141, 24);
+text-align: center;
+padding: 15px 0%;
+width: 25%;
+
 }
 
-.article {
-    width: 90%;
-    margin: auto;
-}
-
-#map {
-    width: 100%;
-    height: 760px;
-    border: 1px solid gray;
-}
-
-#footer {
-    width: 100%;
-    padding: 1em 0 3em 0;
-}
-#footer .back {
-    float: left;
-}
-#footer .next {
-    float: right;
-}
-
-a:link, a:visited {
+a.Boys {
+    font-size: 16px;
     color: black;
+    text-align: center;
+    
+    text-decoration: rgb(187, 141, 24);
+	
+	float: right;
+    display: block;
+    color: rgb(187, 141, 24);
+    text-align: center;
+    padding: 15px 0%;
+	width: 25%;
+
 }
-.gray, .gray a:link, .gray a:visited {
-    color: gray;
+
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+	padding-right:0%;
+	padding-left:20%;
+	
 }
-.white, .white a:link, .white a:visited {
-    color: white;
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: rgb(187, 141, 24);
+    padding: 14px 16px;
+    background-color: inherit;
+
+}
+
+.leiste a:hover, .dropdown:hover .dropbtn {
+    background-color: transparent;
+    color:  rgb(187, 141, 24);
+	
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: initial;
+    color:  rgb(187, 141, 24);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+	width: 80%;
+}
+
+.dropdown-content a:hover {
+    background-color: white;
+	width:80%;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    
+}
+
+
+
+
+
+
+
+/* Haupttitel im weissen Balken*/
+h1 {
+	background-color: transparent;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: center;
+	color:  rgb(187, 141, 24);
+	font-size: 53px;
+	text-transform: uppercase;  
+}
+
+
+/* Untertitel */
+h2 {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: left;
+	color:  rgb(187, 141, 24);
+	font-size: 20px;  
+	padding-left: 10px;
+	background-color: transparent;
+}
+
+/*Kurzbeschreibung*/
+h5 {
+	background-color: transparent;
+	font-family: Helvetica, fantasy;
+	text-align: center;
+	font-size: 23px;
+	font-weight:normal;
+	font-style:normal;
+	padding: 0px 20px;
+}
+
+/*Absatz mit Tourenbeschreibung in Blocksatz */
+#Tourenbeschreibung {
+	text-align: justify;
+	padding: 10px 50px;
+	background-color: transparent;
+}
+
+/* Karte */
+#map {
+	width: center;
+	height: 500px;
+	border: solid 2px grey;
+}
+
+/* Dropdown selector*/
+#gpx {
+	background-color:black;
+    color:  rgb(187, 141, 24);
+    padding: 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+/*Tabellen*/
+
+
+table {
+	border-collapse: separate;
+	width: 100%;
+	table-layout: fixed;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 16px;
+    background-color: transparent;
+}
+
+table.team {
+     border: "1";
+     color: black
+}
+img.profilbild {
+    border: 4px solid black;
+    max-width: 250px;
+    border-radius: 50%
+     
+    }
+    
+a.link {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    
+}
+
+em, {
+	padding-left: 10px; 
+}
+
+
+img.Bild {
+    width: 500px;
+	float: right;
+   padding:20px;
+   border:15px; 
+   background-color:rgba(255, 255, 255, 0.7);
+}
+
+
+#Tourenbeschreibung {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: transparent;
+    text-align: left;
+	font-size: 16px;
+	font-weight:normal;
+	font-style:normal;
+	padding: 0px 15px;
+
 }

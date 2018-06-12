@@ -1,4 +1,6 @@
-var myMap = L.map("map");
+var myMap = L.map("map",{
+    fullscreenControl: true
+});
 
 
 let myLayers = {

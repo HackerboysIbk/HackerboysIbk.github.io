@@ -16,6 +16,8 @@
     <script defer src="toureninfo.js"></script>
     <script defer src="salzBike.js"></script>
     <script src="js/leaflet.elevation/leaflet.elevation-0.0.4.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 
     <script src="https://d3js.org/d3.v3.min.js"></script>
 
@@ -28,10 +30,10 @@
 
 
     <div class="container">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="start">Überblick</a>
 
         <div class="dropdown">
-            <button class="dropbtn">Touren</button>
+            <button class="dropbtn">Routen</button>
             <div class="dropdown-content">
                 <a href="touren.html?gpx=Gaisberg_Gipfel.gpx">Gaisberg Gipfel Tour</a>
                 <a href="touren.html?gpx=Gaisberg_Zistelam.gpx">Gaisberg Zistelalm Tour</a>
@@ -44,15 +46,13 @@
             </div>
 
         </div>
-        <a href="team.html">Team</a>
+        <a href="team.html" class="Boys">Die Boys</a>
     </div>
 
 
     <h1 id="Titel"></h1>
 
-    <h5>
-        <p id="Kurztext"></p>
-    </h5>
+    <h5 id="Kurztext"></h5>
 
 
     <select id="gpx">
@@ -76,7 +76,7 @@
     <table border="1">
         <tr>
             <td>
-                <h4>Start- und Endpunkt</h4>
+                <h4>Startpunkt</h4>
                 <div id="Start"></div>
             </td>
             <td>
@@ -85,17 +85,17 @@
             </td>
 
             <td>
-                <h4> Kondition </h4>
-                <div id="Kondition"></div>
+                <h4> Schwierigkeit </h4>
+                <div id="Schwierigkeit"></div>
             </td>
 
             <td>
-                <h4>Länge in Km</h4>
-                <div id="Laenge"></div>
+                <h4>Distanz</h4>
+                <p><span id="Laenge"></span> Kilometer</p>
             </td>
             <td>
-                <h4>Dauer in Std. </h4>
-                <div id="Zeit"></div>
+                <h4>Dauer </h4>
+               <p><span id="Zeit"></span> Stunden</p>
             </td>
         </tr>
         <tr>
@@ -104,25 +104,26 @@
                 <div id="Landschaft"></div>
             </td>
             <td>
-                <h4>Schwierigkeit</h4>
-                <div id="Schwierigkeit"></div>
+                <h4>Kondition</h4>
+                <div id="Kondition"></div>
             </td>
             <td>
-                <h4>Aufstieg in hm</h4>
-                <div id="auf"></div>
+                <h4>Technik</h4>
+                <div id="Technik"></div>
             </td>
             <td>
-                <h4>Abstieg in hm</h4>
-                <div id="ab"></div>
+                <h4>Aufstieg</h4>
+                <p><span id="auf"></span>m</p>
             </td>
             <td>
-                <h4>höchster Punkt in hm</h4>
-                <div id="HoechsterPunkt"></div>
+                <h4>höchster Punkt</h4>
+                <p><span id="HoechsterPunkt"></span>m</p>
             </td>
         </tr>
     </table>
 
-
+<br>
+<br>
     <h2>Tourenbeschreibung </h2>
     <div>
         <div id="Tourenbeschreibung"></div>
@@ -130,17 +131,9 @@
 
     <div id="Foto"></div>
 
+    <br>
+    <br>
+    <br>
 
-    <br></br>
-
-
-    <em> Inhaltlich stammen die Informationen von
-        <div id="Quelle"></div>
-    </em>
-
-
-    <br></br>
 </body>
 </html>
-
-<h1 id="Titel "></h1>
