@@ -3,11 +3,12 @@ html {
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;
+    background-size: cover;
+    
 }
  
 body {
-	font-family: "Open Sans";
+    font-family: "OPEN SANS";
 	font-weight: 100px;
 	margin: 100px;
 	max-width: center;
@@ -15,6 +16,7 @@ body {
 	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.6);
     background-color: rgba(214, 208, 177, 0.774);
     margin: 10%;
+    
 }
 
 .container {
@@ -121,6 +123,17 @@ h2 {
 	background-color: transparent;
 }
 
+h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 10px;
+    font-size: 18px
+}
+
+h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+}
+
 h5 {
 	background-color: transparent;
 	font-family: Helvetica, fantasy;
@@ -131,6 +144,18 @@ h5 {
 	padding: 0px 20px;
 }
 
+p {
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 23px;
+    text-align: center;
+    color:black;
+}
+
+p.tabelle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px
+}
 #Tourenbeschreibung {
 	text-align: justify;
 	padding: 10px 50px;
@@ -152,13 +177,13 @@ h5 {
 }
 
 table {
-	border-collapse: separate;
-	width: 100%;
+    border-collapse: collapse;
+	width: 100% ;
 	table-layout: fixed;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 16px;
-    background-color: transparent;
+    background-color: transparent; 
 }
 
 table.team {
@@ -175,6 +200,7 @@ img.profilbild {
 a.link {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
+    font-size: 16px
 }
 
 #Tourenbeschreibung {

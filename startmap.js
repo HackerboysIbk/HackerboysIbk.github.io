@@ -44,12 +44,12 @@ myMap.addControl(myMapControl);
 
 myMap.setView([47.811195, 13.033229], 10);
 
-L.control.scale({
+L.control.betterscale({
     maxwidth: 200,
     metric: true,
     imperial: false,
     position: "bottomleft"
-}).addTo(myMap)
+}).addTo(myMap);
 
 //let gpxTrack = new L.GPX("data/Gaisberg_Gipfel.gpx",{async:true}).addTo(myMap);
 

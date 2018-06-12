@@ -18,7 +18,8 @@
     <script src="js/leaflet.elevation/leaflet.elevation-0.0.4.min.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
-
+    <script src="js/leaflet-betterscale-master/L.Control.BetterScale.js"></script>
+    <link rel="stylesheet" href="js/leaflet-betterscale-master/L.Control.BetterScale.css"/>
     <script src="https://d3js.org/d3.v3.min.js"></script>
 
 
@@ -49,14 +50,17 @@
         <a href="team.html" class="Boys">Die Boys</a>
     </div>
 
+<br>
 
     <h1 id="Titel"></h1>
 
+
     <h5 id="Kurztext"></h5>
 
+<br>
+<br>
 
     <select id="gpx">
-        <option value="" selected>Tourenauswahl</option>
         <option value="Gaisberg_Gipfel.gpx">Gaisberg Gipfel Tour</option>
         <option value="Gaisberg_Zistelam.gpx">Gaisberg Zistelalm Tour</option>
         <option value="Hoeglrunde.gpx">Hoegelrunde</option>
@@ -66,7 +70,6 @@
         <option value="Staufen_Umrundung.gpx">Staufner Umrundung</option>
         <option value="Wallersee_Rundfahrt.gpx">Wallersee Rundfahrt</option>
     </select>
-
 
     <div id="map"></div>
 
@@ -91,11 +94,11 @@
 
             <td>
                 <h4>Distanz</h4>
-                <p><span id="Laenge"></span> Kilometer</p>
+                <p class="tabelle"><span id="Laenge"></span> Kilometer</p>
             </td>
             <td>
                 <h4>Dauer </h4>
-               <p><span id="Zeit"></span> Stunden</p>
+               <p class="tabelle"><span id="Zeit"></span> Stunden</p>
             </td>
         </tr>
         <tr>
@@ -113,11 +116,11 @@
             </td>
             <td>
                 <h4>Aufstieg</h4>
-                <p><span id="auf"></span>m</p>
+                <p class="tabelle"><span id="auf"></span>m</p>
             </td>
             <td>
                 <h4>höchster Punkt</h4>
-                <p><span id="HoechsterPunkt"></span>m</p>
+                <p class="tabelle"><span id="HoechsterPunkt"></span>m</p>
             </td>
         </tr>
     </table>

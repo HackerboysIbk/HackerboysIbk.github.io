@@ -50,19 +50,20 @@ let myMapControl = L.control.layers({
 
 myMap.addControl(myMapControl)
 
-L.control.scale({
+
+L.control.betterscale({
     maxwidth: 200,
     metric: true,
     imperial: false,
     position: "bottomleft"
-}).addTo(myMap)
+}).addTo(myMap);
 
 
 //Hoehenprofil einspeisen ueber leaflet.elevation plugin (23.05)
 let hoehenprofil = L.control.elevation({
     position: "bottomright",
     theme: "steelblue-theme",
-    collapsed: false,
+    collapsed: true,
 }).addTo(myMap);
 
 //myMap.setView([47.811195, 13.033229], 11);
@@ -192,8 +193,8 @@ function loadTrack(track) {
                 var firstpolyline = new L.Polyline(pointList, {
                     color: farbe,
                     weight: 5,
-                    opacity: 0.7,
-                    smoothFactor: 1
+                    opacity: 1,
+                    smoothFactor: 1,
 
                 });
     
