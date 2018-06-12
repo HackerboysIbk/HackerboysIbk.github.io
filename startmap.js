@@ -42,7 +42,7 @@ let myMapControl = L.control.layers({
 
 myMap.addControl(myMapControl);
 
-myMap.setView([47.811195, 13.033229], 11);
+myMap.setView([47.811195, 13.033229], 10);
 
 L.control.scale({
     maxwidth: 200,
